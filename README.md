@@ -26,24 +26,12 @@ rm -rf ~/Videos ~/Templates ~/Public ~/Pictures ~/Music ~/Downloads ~/Documents
 ```sh
 sudo apt update && \
 sudo apt upgrade -y && \
-sudo apt install -y git zsh zsh-syntax-highlighting curl i3 rofi compton \
+sudo apt install -y git zsh zsh-syntax-highlighting curl \
 tree ripgrep fd-find silversearcher-ag unzip bat python3-dev \
 neofetch stow zoxide python3-pip libsqlite3-dev \
 libssl-dev wget && \
 sudo apt autoremove -y && \
 sudo apt autoclean -y
-```
-
-<br />
-
-Remove vim.
-```sh
-sudo apt remove -y vim && \
-sudo apt remove -y vim-common && \
-sudo apt autoremove -y && \
-sudo apt autoclean -y && \
-sudo rm -rf /usr/share/vim && \
-sudo rm -rf /etc/vim
 ```
 
 <br />
@@ -71,3 +59,46 @@ mv ~/.oh-my-zsh ~/Flo/Dotfiles/oh-my-zsh && \
 cd ~/Flo/Dotfiles && \
 stow -t ~/ oh-my-zsh
 ```
+
+<br />
+
+## Remove Vim.
+
+```sh
+sudo apt remove -y vim && \
+sudo apt remove -y vim-common && \
+sudo apt autoremove -y && \
+sudo apt autoclean -y && \
+sudo rm -rf /usr/share/vim && \
+sudo rm -rf /etc/vim
+```
+
+<br />
+
+## Install Neovim from sources.
+
+1. Install dependencies.
+```sh
+cd ~ && \
+sudo apt install -y ninja-build gettext libtool libtool-bin autoconf python3-dev \
+automake cmake g++ pkg-config doxygen libicu-dev libboost-all-dev libssl-dev \
+ripgrep fd-find silversearcher-ag zoxide python3-pip libsqlite3-dev bat
+```
+
+<br />
+
+2. Clone Neovim repository.
+```sh
+git clone https://github.com/neovim/neovim ~/Flo/Apps/Neovim
+```
+
+<br />
+
+3. Compile sources.
+```sh
+cd ~/Flo/Apps/Neovim && \
+make CMAKE_BUILD_TYPE=RelWithDebInfo && \
+sudo make install
+```
+
+## 
