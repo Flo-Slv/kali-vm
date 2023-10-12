@@ -1,6 +1,8 @@
 # kali-vm
 My config for a Kali VM.
 
+## Update packages.
+
 ```sh
 sudo apt update && \
 sudo apt upgrade -y && \
@@ -8,11 +10,31 @@ sudo apt autoremove -y && \
 sudo apt autoclean -y
 ```
 
-Create folder structure.
+<br />
+
+## Create folder structure.
+
 ```sh
 mkdir ~/Flo ~/Flo/Dev ~/Flo/Downloads ~/Flo/Apps ~/Flo/Dotfiles && \
 rm -rf ~/Videos ~/Templates ~/Public ~/Pictures ~/Music ~/Downloads ~/Documents
 ```
+
+<br />
+
+## Install dependencies.
+
+```sh
+sudo apt update && \
+sudo apt upgrade -y && \
+sudo apt install -y git zsh zsh-syntax-highlighting curl i3 rofi compton \
+tree ripgrep fd-find silversearcher-ag unzip bat python3-dev \
+neofetch stow zoxide python3-pip libsqlite3-dev \
+libssl-dev wget && \
+sudo apt autoremove -y && \
+sudo apt autoclean -y
+```
+
+<br />
 
 Remove vim.
 ```sh
@@ -24,14 +46,28 @@ sudo rm -rf /usr/share/vim && \
 sudo rm -rf /etc/vim
 ```
 
-Install dependencies.
+<br />
+
+## Install OH-MY-ZSH.
+
 ```sh
-sudo apt update && \
-sudo apt upgrade -y && \
-sudo apt install -y git zsh zsh-syntax-highlighting curl i3 rofi compton \
-tree ripgrep fd-find silversearcher-ag unzip bat python3-dev \
-neofetch stow zoxide python3-pip libsqlite3-dev \
-libssl-dev wget && \
-sudo apt autoremove -y && \
-sudo apt autoclean -y
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+Close terminal.<br />
+Logout then login.<br />
+Open terminal.
+
+Create needed folder and files, install custom theme `ys-flo.zsh-theme` and install plugins `zsh-autosuggestions` and `zsh-syntax-highlighting`.<br />
+https://github.com/Flo-Slv/Dotfiles/blob/main/oh-my-zsh/ys-flo.zsh-theme<br />
+https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh<br />
+https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+
+```sh
+mkdir -p ~/Flo/Dotfiles/oh-my-zsh && \
+wget -P ~/.oh-my-zsh/custom/themes https://raw.githubusercontent.com/Flo-Slv/Dotfiles/main/oh-my-zsh/ys-flo.zsh-theme && \
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && \
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+mv ~/.oh-my-zsh ~/Flo/Dotfiles/oh-my-zsh && \
+cd ~/Flo/Dotfiles && \
+stow -t ~/ oh-my-zsh
 ```
