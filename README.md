@@ -29,7 +29,7 @@ sudo apt upgrade -y && \
 sudo apt install -y git zsh zsh-syntax-highlighting curl \
 tree ripgrep fd-find silversearcher-ag unzip bat python3-dev \
 neofetch stow zoxide python3-pip libsqlite3-dev \
-libssl-dev wget poppler-utils && \
+libssl-dev wget poppler-utils libimage-exiftool-perl && \
 sudo apt autoremove -y && \
 sudo apt autoclean -y
 ```
